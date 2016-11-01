@@ -1,7 +1,7 @@
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateSessionFactory {
+public class HibernateSessionFactory implements AutoCloseable {
 
     private static SessionFactory sessionFactory = null;
 
@@ -13,4 +13,10 @@ public class HibernateSessionFactory {
         return sessionFactory;
     }
 
+    @Override
+    public void close() throws Exception {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
+    }
 }

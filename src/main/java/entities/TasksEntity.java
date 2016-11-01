@@ -1,7 +1,5 @@
 package entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +10,7 @@ public class TasksEntity {
     private Byte isDone;
 
     @Id
-    @GenericGenerator(name = "autoincrement", strategy = "increment")
-    @GeneratedValue(generator = "autoincrement")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

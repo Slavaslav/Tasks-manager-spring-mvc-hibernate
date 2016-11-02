@@ -1,17 +1,8 @@
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class Main {
     public static void main(String[] args) {
         try (SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory()) {
-            Session session = sessionFactory.openSession();
-
-            // add new row to the database
-            /*session.beginTransaction();
-            TasksEntity tasksEntity = new TasksEntity();
-            tasksEntity.setTaskName("new task 4");
-            session.save(tasksEntity);
-            session.getTransaction().commit();*/
 
             // read all date from table
            /* CriteriaQuery<TasksEntity> criteria = session.getCriteriaBuilder().createQuery(TasksEntity.class);
@@ -21,12 +12,35 @@ public class Main {
                 System.out.println(entity.getTaskName());
             }*/
 
+            // add new row to the database
+           /* Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            for (int i = 1; i <= 10; i++) {
+                TasksEntity tasksEntity = new TasksEntity();
+                tasksEntity.setTaskName("new task " + i + 1);
+                session.save(tasksEntity);
+            }
+            transaction.commit();*/
+
+            // find existing row
+            /*Session session = sessionFactory.openSession();
+            TasksEntity tasksEntity = session.load(TasksEntity.class, 1);
+            System.out.println(tasksEntity.getTaskName());*/
+
+            // update some row
+           /* Session session = sessionFactory.openSession();
+            TasksEntity tasksEntity = session.load(TasksEntity.class, 1);
+            tasksEntity.setTaskName("new new task");
+            Transaction transaction = session.beginTransaction();
+            session.save(tasksEntity);
+            transaction.commit();*/
+
             // delete row
-            /*session.beginTransaction();
-            TasksEntity entity = new TasksEntity();
-            entity.setId(1);
-            session.delete(entity);
-            session.getTransaction().commit();*/
+           /* Session session = sessionFactory.openSession();
+            TasksEntity tasksEntity = session.load(TasksEntity.class, 10);
+            Transaction transaction = session.beginTransaction();
+            session.delete(tasksEntity);
+            transaction.commit();*/
 
         } catch (Exception e) {
             System.out.println(e);

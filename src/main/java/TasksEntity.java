@@ -1,7 +1,7 @@
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tasks", schema = "test", catalog = "")
+@Table(name = "tasks", schema = "test")
 public class TasksEntity {
     private int id;
     private String taskName;
@@ -9,7 +9,7 @@ public class TasksEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -19,7 +19,7 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "task_name", nullable = true, length = 45)
+    @Column(name = "task_name")
     public String getTaskName() {
         return taskName;
     }
@@ -29,7 +29,7 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "is_done", nullable = true)
+    @Column(name = "is_done")
     public Byte getIsDone() {
         return isDone;
     }

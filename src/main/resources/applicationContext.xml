@@ -2,6 +2,13 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="main" class="com.tasksmanager.Main"/>
+    <bean id="tasksModel" class="com.tasksmanager.TasksModel"/>
+    <bean id="tasksConsoleView" class="com.tasksmanager.view.TasksConsoleView">
+        <property name="controller" ref="tasksController"/>
+    </bean>
+    <bean id="tasksController" class="com.tasksmanager.TasksController">
+        <constructor-arg index="0" ref="tasksModel"/>
+        <constructor-arg index="1" ref="tasksConsoleView"/>
+    </bean>
 
 </beans>

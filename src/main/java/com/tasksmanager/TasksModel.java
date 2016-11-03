@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class TasksModel implements AutoCloseable {
+public class TasksModel {
     private Session session = HibernateSessionFactory.getSessionFactory().openSession();
 
     public List<TaskEntity> getAllTasks() {
@@ -32,6 +32,7 @@ public class TasksModel implements AutoCloseable {
         return session.load(TaskEntity.class, id);
     }
 
+    //todo
     // update some row
            /* Session session = sessionFactory.openSession();
             com.tasksmanager.TaskEntity tasksEntity = session.load(com.tasksmanager.TaskEntity.class, 1);
@@ -39,11 +40,4 @@ public class TasksModel implements AutoCloseable {
             Transaction transaction = session.beginTransaction();
             session.save(tasksEntity);
             transaction.commit();*/
-
-    @Override
-    public void close() throws Exception {
-        if (HibernateSessionFactory.getSessionFactory() != null) {
-            HibernateSessionFactory.getSessionFactory().close();
-        }
-    }
 }

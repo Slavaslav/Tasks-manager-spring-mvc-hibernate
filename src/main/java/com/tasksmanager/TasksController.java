@@ -27,8 +27,12 @@ public class TasksController {
         tasksView.showAllTasks();
     }
 
-    public void selectTypeOperation() {
+    private void selectTypeOperation() {
         tasksView.selectTypeOperation();
+    }
+
+    public void run() {
+        selectTypeOperation();
     }
 
 

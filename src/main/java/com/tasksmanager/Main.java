@@ -1,17 +1,16 @@
 package com.tasksmanager;
 
-import com.tasksmanager.view.TasksConsoleView;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Main main = (Main) context.getBean("main");
-        main.run();
+        TasksController controller = (TasksController) context.getBean("tasksController");
+        controller.run();
     }
 
-    private static void run() {
+   /* private static void run() {
         try (TasksModel tasksModel = new TasksModel()) {
             TasksConsoleView tasksView = new TasksConsoleView();
             TasksController tasksController = new TasksController(tasksModel, tasksView);
@@ -20,5 +19,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

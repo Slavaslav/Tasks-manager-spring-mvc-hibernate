@@ -1,6 +1,7 @@
 package com.tasksmanager.view;
 
 import com.tasksmanager.ConsoleHelper;
+import com.tasksmanager.HibernateSessionFactory;
 import com.tasksmanager.TaskEntity;
 import com.tasksmanager.TasksController;
 
@@ -9,7 +10,6 @@ import java.util.List;
 public class TasksConsoleView {
 
     private TasksController controller;
-
 
     public void showAllTasks() {
         List<TaskEntity> tasks = controller.getAllTasks();
@@ -38,6 +38,13 @@ public class TasksConsoleView {
                     break;
                 case "4":
                     ConsoleHelper.writeMessage("not implemented");
+                    break;
+                case "exit":
+                    ConsoleHelper.writeMessage("Program will be stopped.");
+                    // Todo
+                    if (HibernateSessionFactory.getSessionFactory() != null) {
+                        HibernateSessionFactory.getSessionFactory().close();
+                    }
                     break;
             }
         }

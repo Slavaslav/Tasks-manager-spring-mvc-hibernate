@@ -32,6 +32,14 @@ public class TasksModel implements AutoCloseable {
         return session.load(TaskEntity.class, id);
     }
 
+    // update some row
+           /* Session session = sessionFactory.openSession();
+            com.tasksmanager.TaskEntity tasksEntity = session.load(com.tasksmanager.TaskEntity.class, 1);
+            tasksEntity.setTaskName("new new task");
+            Transaction transaction = session.beginTransaction();
+            session.save(tasksEntity);
+            transaction.commit();*/
+
     @Override
     public void close() throws Exception {
         if (HibernateSessionFactory.getSessionFactory() != null) {

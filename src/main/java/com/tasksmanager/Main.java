@@ -1,9 +1,17 @@
 package com.tasksmanager;
 
 import com.tasksmanager.view.TasksConsoleView;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Main main = (Main) context.getBean("main");
+        main.run();
+    }
+
+    private static void run() {
         try (TasksModel tasksModel = new TasksModel()) {
             TasksConsoleView tasksView = new TasksConsoleView();
             TasksController tasksController = new TasksController(tasksModel, tasksView);
@@ -12,13 +20,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // update some row
-           /* Session session = sessionFactory.openSession();
-            com.tasksmanager.TaskEntity tasksEntity = session.load(com.tasksmanager.TaskEntity.class, 1);
-            tasksEntity.setTaskName("new new task");
-            Transaction transaction = session.beginTransaction();
-            session.save(tasksEntity);
-            transaction.commit();*/
     }
 }

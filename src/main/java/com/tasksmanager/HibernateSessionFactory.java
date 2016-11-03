@@ -1,7 +1,9 @@
+package com.tasksmanager;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateSessionFactory implements AutoCloseable {
+public class HibernateSessionFactory {
 
     private static SessionFactory sessionFactory = null;
 
@@ -11,12 +13,5 @@ public class HibernateSessionFactory implements AutoCloseable {
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
-    }
-
-    @Override
-    public void close() throws Exception {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
     }
 }

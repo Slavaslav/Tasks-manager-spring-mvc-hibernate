@@ -1,8 +1,10 @@
+package com.tasksmanager;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks", schema = "test")
-public class TasksEntity {
+public class TaskEntity {
     private int id;
     private String taskName;
     private Byte isDone;
@@ -43,7 +45,7 @@ public class TasksEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TasksEntity that = (TasksEntity) o;
+        TaskEntity that = (TaskEntity) o;
 
         if (id != that.id) return false;
         if (taskName != null ? !taskName.equals(that.taskName) : that.taskName != null) return false;

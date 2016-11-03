@@ -9,8 +9,8 @@
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
-        <mapping class="TasksEntity"/>
+        <property name="show_sql">false</property>
+        <property name="hbm2ddl.auto">update</property>
+        <mapping class="com.tasksmanager.TaskEntity"/>
     </session-factory>
 </hibernate-configuration>

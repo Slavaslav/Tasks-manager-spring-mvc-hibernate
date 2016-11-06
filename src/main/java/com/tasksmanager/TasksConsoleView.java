@@ -32,7 +32,7 @@ public class TasksConsoleView {
                     controller.deleteTask(deleteTask());
                     break;
                 case "4":
-                    ConsoleHelper.writeMessage("not implemented");
+                    controller.updateTask(updateTask());
                     break;
                 case "exit":
                     ConsoleHelper.writeMessage("Program will be stopped.");
@@ -55,6 +55,15 @@ public class TasksConsoleView {
     private int deleteTask() {
         ConsoleHelper.writeMessage("Enter a task id:");
         return ConsoleHelper.readInt();
+    }
+
+    private TasksEntity updateTask() {
+        TasksEntity tasksEntity = new TasksEntity();
+        ConsoleHelper.writeMessage("Enter task id for update:");
+        tasksEntity.setId(ConsoleHelper.readInt());
+        ConsoleHelper.writeMessage("Enter new task name:");
+        tasksEntity.setTaskName(ConsoleHelper.readString());
+        return tasksEntity;
     }
 
     public void setController(TasksController controller) {

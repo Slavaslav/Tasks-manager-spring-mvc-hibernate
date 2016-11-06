@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class TasksModel {
+    //todo
     private Session session = HibernateSessionFactory.getSessionFactory().openSession();
 
     public List<TasksEntity> getAllTasks() {
@@ -32,12 +33,11 @@ public class TasksModel {
         return session.load(TasksEntity.class, id);
     }
 
-    //todo
-    // update some row
-           /* Session session = sessionFactory.openSession();
-            com.tasksmanager.TaskEntity tasksEntity = session.load(com.tasksmanager.TaskEntity.class, 1);
-            tasksEntity.setTaskName("new new task");
-            Transaction transaction = session.beginTransaction();
-            session.save(tasksEntity);
-            transaction.commit();*/
+    public void updateTask(TasksEntity taskEntity) {
+        TasksEntity task = session.load(com.tasksmanager.TasksEntity.class, taskEntity.getId());
+        task.setTaskName(taskEntity.getTaskName());
+        Transaction transaction = session.beginTransaction();
+        session.update(task);
+        transaction.commit();
+    }
 }

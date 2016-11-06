@@ -33,8 +33,12 @@ public class TasksController {
         selectTypeOperation();
     }
 
-
     public List<TasksEntity> getAllTasks() {
         return tasksModel.getAllTasks();
+    }
+
+    public void updateTask(TasksEntity tasksEntity) {
+        tasksModel.updateTask(tasksEntity);
+        tasksView.showAllTasks();
     }
 }

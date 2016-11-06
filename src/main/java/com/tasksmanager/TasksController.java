@@ -3,10 +3,10 @@ package com.tasksmanager;
 import java.util.List;
 
 public class TasksController {
-    private TasksModel tasksModel;
+    private TasksModelDao tasksModel;
     private TasksConsoleView tasksView;
 
-    public TasksController(TasksModel tasksModel, TasksConsoleView tasksView) {
+    public TasksController(TasksModelDao tasksModel, TasksConsoleView tasksView) {
         this.tasksModel = tasksModel;
         this.tasksView = tasksView;
     }
@@ -21,7 +21,7 @@ public class TasksController {
     }
 
     public void deleteTask(int id) {
-        tasksModel.deleteTask(id);
+        tasksModel.deleteTaskById(id);
         tasksView.showAllTasks();
     }
 

@@ -6,10 +6,11 @@ import org.hibernate.Transaction;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class TasksModel {
+public class TasksModel implements TasksModelDao {
     //todo
     private Session session = HibernateSessionFactory.getSessionFactory().openSession();
 
+    @Override
     public List<TasksEntity> getAllTasks() {
         CriteriaQuery<TasksEntity> criteria = session.getCriteriaBuilder().createQuery(TasksEntity.class);
         criteria.select(criteria.from(TasksEntity.class));
@@ -17,13 +18,15 @@ public class TasksModel {
         return session.createQuery(criteria).getResultList();
     }
 
+    @Override
     public void addNewTask(TasksEntity taskEntity) {
         Transaction transaction = session.beginTransaction();
         session.save(taskEntity);
         transaction.commit();
     }
 
-    public void deleteTask(int id) {
+    @Override
+    public void deleteTaskById(int id) {
         Transaction transaction = session.beginTransaction();
         session.delete(getTask(id));
         transaction.commit();
@@ -33,8 +36,9 @@ public class TasksModel {
         return session.load(TasksEntity.class, id);
     }
 
+    @Override
     public void updateTask(TasksEntity taskEntity) {
-        TasksEntity task = session.load(com.tasksmanager.TasksEntity.class, taskEntity.getId());
+        TasksEntity task = getTask(taskEntity.getId());
         task.setTaskName(taskEntity.getTaskName());
         Transaction transaction = session.beginTransaction();
         session.update(task);

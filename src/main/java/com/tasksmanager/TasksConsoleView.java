@@ -1,9 +1,4 @@
-package com.tasksmanager.view;
-
-import com.tasksmanager.ConsoleHelper;
-import com.tasksmanager.HibernateSessionFactory;
-import com.tasksmanager.TaskEntity;
-import com.tasksmanager.TasksController;
+package com.tasksmanager;
 
 import java.util.List;
 
@@ -12,8 +7,8 @@ public class TasksConsoleView {
     private TasksController controller;
 
     public void showAllTasks() {
-        List<TaskEntity> tasks = controller.getAllTasks();
-        for (TaskEntity entity : tasks) {
+        List<TasksEntity> tasks = controller.getAllTasks();
+        for (TasksEntity entity : tasks) {
             System.out.println(String.format("Task Id : %d, Task name : %s, Is done - %d",
                     entity.getId(), entity.getTaskName(), entity.getIsDone()));
         }
@@ -50,9 +45,9 @@ public class TasksConsoleView {
         }
     }
 
-    private TaskEntity createNewTask() {
+    private TasksEntity createNewTask() {
         ConsoleHelper.writeMessage("Enter a task name:");
-        TaskEntity entity = new TaskEntity();
+        TasksEntity entity = new TasksEntity();
         entity.setTaskName(ConsoleHelper.readString());
         return entity;
     }

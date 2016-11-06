@@ -9,14 +9,14 @@ import java.util.List;
 public class TasksModel {
     private Session session = HibernateSessionFactory.getSessionFactory().openSession();
 
-    public List<TaskEntity> getAllTasks() {
-        CriteriaQuery<TaskEntity> criteria = session.getCriteriaBuilder().createQuery(TaskEntity.class);
-        criteria.select(criteria.from(TaskEntity.class));
+    public List<TasksEntity> getAllTasks() {
+        CriteriaQuery<TasksEntity> criteria = session.getCriteriaBuilder().createQuery(TasksEntity.class);
+        criteria.select(criteria.from(TasksEntity.class));
 
         return session.createQuery(criteria).getResultList();
     }
 
-    public void addNewTask(TaskEntity taskEntity) {
+    public void addNewTask(TasksEntity taskEntity) {
         Transaction transaction = session.beginTransaction();
         session.save(taskEntity);
         transaction.commit();
@@ -28,8 +28,8 @@ public class TasksModel {
         transaction.commit();
     }
 
-    private TaskEntity getTask(int id) {
-        return session.load(TaskEntity.class, id);
+    private TasksEntity getTask(int id) {
+        return session.load(TasksEntity.class, id);
     }
 
     //todo

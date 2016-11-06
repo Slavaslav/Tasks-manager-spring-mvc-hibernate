@@ -1,7 +1,5 @@
 package com.tasksmanager;
 
-import com.tasksmanager.view.TasksConsoleView;
-
 import java.util.List;
 
 public class TasksController {
@@ -17,7 +15,7 @@ public class TasksController {
         tasksView.showAllTasks();
     }
 
-    public void addNewTask(TaskEntity taskEntity) {
+    public void addNewTask(TasksEntity taskEntity) {
         tasksModel.addNewTask(taskEntity);
         tasksView.showAllTasks();
     }
@@ -36,7 +34,7 @@ public class TasksController {
     }
 
 
-    public List<TaskEntity> getAllTasks() {
+    public List<TasksEntity> getAllTasks() {
         return tasksModel.getAllTasks();
     }
 }

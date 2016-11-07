@@ -1,3 +1,4 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
@@ -13,12 +14,11 @@
             <button>create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
-        <form class="login-form">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
+        <form:form method="post" commandName="task" action="login-result" class="login-form">
+            <form:input path="taskName" placeholder="Task name"/>
+            <form:password path="isDone" placeholder="Password"/>
+            <input type="submit" value="Login">
+        </form:form>
     </div>
 </div>
 </body>

@@ -11,9 +11,8 @@ public class TaskController {
         return new ModelAndView("tasks");
     }
 
-    @RequestMapping(value = "/test")
+    @RequestMapping(value = "/login")
     public ModelAndView test1() {
-        System.out.println("test1");
-        return new ModelAndView("test");
+        return new ModelAndView("login");
     }
 }

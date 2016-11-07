@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-    <title>Login</title>
+    <title>Tasks</title>
 </head>
 <body>
 <div class="login-page">
@@ -17,7 +17,7 @@
             <input type="text" placeholder="Username"/>
             <input type="password" placeholder="Password"/>
             <button>login</button>
-            <p class="message">Not registered? <a href="/test">Create an account</a></p>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
     </div>
 </div>

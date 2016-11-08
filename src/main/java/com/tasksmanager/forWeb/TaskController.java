@@ -2,24 +2,21 @@ package com.tasksmanager.forWeb;
 
 import com.tasksmanager.TasksEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TaskController {
-    @RequestMapping(value = "/")
+    @GetMapping(value = "/")
     public ModelAndView main() {
-        return new ModelAndView("tasks");
+        return new ModelAndView("tasks", "task", new TasksEntity());
     }
 
-    @RequestMapping(value = "/login")
-    public ModelAndView login() {
-        return new ModelAndView("login", "task", new TasksEntity());
-    }
-
-    @RequestMapping(value = "/login-result")
-    public ModelAndView loginResult(@ModelAttribute("task") TasksEntity task) {
-        return new ModelAndView("login-result", "task", task);
+    @PostMapping(value = "/")
+    public String addBook(@ModelAttribute TasksEntity task) {
+        //add book here
+        return "redirect:/";
     }
 }

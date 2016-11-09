@@ -27,13 +27,13 @@
                 <c:out value="${task.isDone}"/>
             </td>
             <td><a href="#">Edit</a></td>
-            <td><a href="#">Delete</a></td>
+            <td><a href="/delete-task${task.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<form:form method="post" modelAttribute="task" action="/">
+<form:form method="post" modelAttribute="task" action="/add-task">
     <form:input path="taskName" placeholder="Task name"/>
     <br>
     <form:checkbox path="isDone" label="Is Done?"/>

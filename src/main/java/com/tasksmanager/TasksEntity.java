@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "tasks", schema = "test", catalog = "")
 public class TasksEntity {
     private int id;
-    private Byte isDone;
+    private boolean isDone;
     private String taskName;
 
     @Id
@@ -21,12 +21,12 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "is_done")
-    public Byte getIsDone() {
+    @Column(name = "is_done", columnDefinition = "TINYINT", length = 1)
+    public boolean getIsDone() {
         return isDone;
     }
 
-    public void setIsDone(Byte isDone) {
+    public void setIsDone(boolean isDone) {
         this.isDone = isDone;
     }
 
@@ -48,16 +48,14 @@ public class TasksEntity {
         TasksEntity that = (TasksEntity) o;
 
         if (id != that.id) return false;
-        if (isDone != null ? !isDone.equals(that.isDone) : that.isDone != null) return false;
-        if (taskName != null ? !taskName.equals(that.taskName) : that.taskName != null) return false;
-
-        return true;
+        if (isDone != that.isDone) return false;
+        return taskName != null ? taskName.equals(that.taskName) : that.taskName == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (isDone != null ? isDone.hashCode() : 0);
+        result = 31 * result + (isDone ? 1 : 0);
         result = 31 * result + (taskName != null ? taskName.hashCode() : 0);
         return result;
     }

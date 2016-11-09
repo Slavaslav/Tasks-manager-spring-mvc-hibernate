@@ -24,7 +24,7 @@
             <td><c:out value="${task.id}"/></td>
             <td><c:out value="${task.taskName}"/></td>
             <td>
-                <c:out value="${task.isDone == 1 ? 'true' : 'false'}"/>
+                <c:out value="${task.isDone}"/>
             </td>
             <td><a href="#">Edit</a></td>
             <td><a href="#">Delete</a></td>
@@ -32,13 +32,12 @@
     </c:forEach>
     </tbody>
 </table>
-
-
 <br>
 <form:form method="post" modelAttribute="task" action="/">
     <form:input path="taskName" placeholder="Task name"/>
-    <%--<form:checkbox path="isDone"/>--%>
-
+    <br>
+    <form:checkbox path="isDone" label="Is Done?"/>
+    <br>
     <button>Add new task</button>
 </form:form>
 <br>

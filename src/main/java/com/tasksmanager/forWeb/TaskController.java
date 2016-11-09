@@ -22,7 +22,7 @@ public class TaskController {
 
     @PostMapping(value = "/")
     public String addBook(@ModelAttribute TasksEntity task) {
-        //add book here
+        tasksModel.addNewTask(task);
         return "redirect:/";
     }
 }

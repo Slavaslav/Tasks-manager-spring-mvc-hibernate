@@ -7,10 +7,6 @@ public class TaskService {
 
     private TaskDao tasksDao;
 
-    public TaskService(TaskDao tasksDao) {
-        this.tasksDao = tasksDao;
-    }
-
     public void addNewTask(Task task) {
         tasksDao.addNewTask(task);
     }
@@ -25,5 +21,9 @@ public class TaskService {
 
     public List<Task> getAllTasks() {
         return tasksDao.getAllTasks();
+    }
+
+    public void setTasksDao(TaskDao tasksDao) {
+        this.tasksDao = tasksDao;
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks", schema = "test", catalog = "")
-public class TasksEntity {
+public class Task {
     private int id;
     private boolean isDone;
     private String taskName;
@@ -45,7 +45,7 @@ public class TasksEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TasksEntity that = (TasksEntity) o;
+        Task that = (Task) o;
 
         if (id != that.id) return false;
         if (isDone != that.isDone) return false;

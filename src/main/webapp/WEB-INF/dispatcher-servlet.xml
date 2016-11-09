@@ -21,7 +21,6 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="packagesToScan" value="com.tasksmanager"/>-->
         <property name="annotatedClasses">
             <list>
                 <value>com.tasksmanager.Task</value>
@@ -42,9 +41,6 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="persistenceExceptionTranslationPostProcessor"
-          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-
     <bean id="taskDao" class="com.tasksmanager.TaskDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
@@ -53,6 +49,8 @@
         <property name="tasksDao" ref="taskDao"/>
     </bean>
 
-    <mvc:default-servlet-handler/>
+    <bean id="taskController" class="com.tasksmanager.TaskController">
+        <property name="taskService" ref="taskService"/>
+    </bean>
     <mvc:annotation-driven/>
 </beans>

@@ -1,6 +1,5 @@
 package com.tasksmanager;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,6 @@ public class TaskController {
         return "redirect:/";
     }
 
-    @Autowired
     public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
     }

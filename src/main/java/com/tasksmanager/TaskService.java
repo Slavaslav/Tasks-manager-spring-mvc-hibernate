@@ -1,8 +1,10 @@
 package com.tasksmanager;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-
+@Service
 public class TaskService {
 
     private TaskDao tasksDao;

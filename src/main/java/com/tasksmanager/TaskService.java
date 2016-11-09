@@ -25,6 +25,10 @@ public class TaskService {
         return tasksDao.getAllTasks();
     }
 
+    public Task getTaskById(int id) {
+        return tasksDao.getTaskById(id);
+    }
+
     public void setTasksDao(TaskDao tasksDao) {
         this.tasksDao = tasksDao;
     }

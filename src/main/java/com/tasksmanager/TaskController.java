@@ -30,6 +30,21 @@ public class TaskController {
         return "redirect:/";
     }
 
+    @GetMapping(value = "/edit-task{id}")
+    public String editTask(@PathVariable("id") int id, Model model) {
+        model.addAttribute("task", taskService.getTaskById(id));
+        model.addAttribute("tasks", taskService.getAllTasks());
+        return "tasks";
+    }
+
+    @PostMapping(value = "/update-task")
+    public String updateTask(@ModelAttribute Task task) {
+        if (task.getTaskName().length() > 0) {
+            taskService.updateTask(task);
+        }
+        return "redirect:/";
+    }
+
     public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
     }

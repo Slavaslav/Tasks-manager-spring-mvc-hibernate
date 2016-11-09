@@ -39,7 +39,7 @@ public class TaskDaoImpl implements TaskDao {
     @Transactional
     public Task getTaskById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.load(Task.class, id);
+        return session.get(Task.class, id);
     }
 
     @Transactional
@@ -47,6 +47,8 @@ public class TaskDaoImpl implements TaskDao {
         Session session = sessionFactory.getCurrentSession();
         Task newTask = getTaskById(task.getId());
         newTask.setTaskName(task.getTaskName());
+        newTask.setId(task.getId());
+        newTask.setIsDone(task.getIsDone());
         session.update(newTask);
     }
 }

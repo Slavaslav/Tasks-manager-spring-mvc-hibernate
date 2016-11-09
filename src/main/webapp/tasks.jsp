@@ -26,20 +26,32 @@
             <td>
                 <c:out value="${task.isDone}"/>
             </td>
-            <td><a href="#">Edit</a></td>
+            <td><a href="/edit-task${task.id}">Edit</a></td>
             <td><a href="/delete-task${task.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<form:form method="post" modelAttribute="task" action="/add-task">
-    <form:input path="taskName" placeholder="Task name"/>
-    <br>
-    <form:checkbox path="isDone" label="Is Done?"/>
-    <br>
-    <button>Add new task</button>
-</form:form>
+<c:if test="${!empty task.taskName}">
+    <form:form method="post" modelAttribute="task" action="/update-task">
+        <form:input path="taskName" value="${task.taskName}"/>
+        <br>
+        <form:checkbox path="isDone" label="Is Done?" value="${task.isDone}"/>
+        <br>
+        <form:input type="hidden" path="id" value="${task.id}"/>
+        <button>Edit task</button>
+    </form:form>
+</c:if>
+<c:if test="${empty task.taskName}">
+    <form:form method="post" modelAttribute="task" action="/add-task">
+        <form:input path="taskName" placeholder="Task name"/>
+        <br>
+        <form:checkbox path="isDone" label="Is Done?"/>
+        <br>
+        <button>Add new task</button>
+    </form:form>
+</c:if>
 <br>
 </body>
 </html>

@@ -9,7 +9,7 @@ public class TasksConsoleView {
     public void showAllTasks() {
         List<TasksEntity> tasks = controller.getAllTasks();
         for (TasksEntity entity : tasks) {
-            System.out.println(String.format("Task Id : %d, Task name : %s, Is done - %d",
+            System.out.println(String.format("Task Id : %d, Task name : %s, Is done - %b",
                     entity.getId(), entity.getTaskName(), entity.getIsDone()));
         }
     }

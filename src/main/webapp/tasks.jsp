@@ -1,8 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
     <title>Tasks Manager</title>
 </head>

@@ -12,4 +12,6 @@ public interface TaskDao {
     List<Task> getAllTasks();
 
     Task getTaskById(int id);
+
+    List<Task> getTasksBySpecifiedQuery(String query);
 }

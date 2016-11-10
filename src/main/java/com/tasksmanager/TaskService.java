@@ -32,4 +32,8 @@ public class TaskService {
     public void setTasksDao(TaskDao tasksDao) {
         this.tasksDao = tasksDao;
     }
+
+    public List<Task> getTasksBySpecifiedQuery(String query) {
+        return tasksDao.getTasksBySpecifiedQuery(query);
+    }
 }

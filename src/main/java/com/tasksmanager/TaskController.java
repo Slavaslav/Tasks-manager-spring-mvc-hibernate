@@ -2,10 +2,7 @@ package com.tasksmanager;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TaskController {
@@ -43,6 +40,24 @@ public class TaskController {
             taskService.updateTask(task);
         }
         return "redirect:/";
+    }
+
+    @PostMapping(value = "/show")
+    public String show(@RequestParam("show") String value, Model model) {
+        String query = "from Task where is_done = ";
+        switch (value) {
+            case "0":
+                query += "'0'";
+                break;
+            case "1":
+                query += "'1'";
+                break;
+            case "2":
+                return "redirect:/";
+        }
+        model.addAttribute("tasks", taskService.getTasksBySpecifiedQuery(query));
+        model.addAttribute("task", new Task());
+        return "tasks";
     }
 
     public void setTaskService(TaskService taskService) {

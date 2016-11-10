@@ -16,6 +16,7 @@ public class TaskDaoImpl implements TaskDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @Override
     @Transactional
     public List<Task> getAllTasks() {
         Session session = sessionFactory.getCurrentSession();
@@ -24,24 +25,35 @@ public class TaskDaoImpl implements TaskDao {
         return session.createQuery(criteria).getResultList();
     }
 
+    @Override
     @Transactional
     public void addNewTask(Task task) {
         Session session = sessionFactory.getCurrentSession();
         session.save(task);
     }
 
+    @Override
     @Transactional
     public void deleteTaskById(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(getTaskById(id));
     }
 
+    @Override
     @Transactional
     public Task getTaskById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Task.class, id);
     }
 
+    @Override
+    @Transactional
+    public List<Task> getTasksBySpecifiedQuery(String query) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery(query).list();
+    }
+
+    @Override
     @Transactional
     public void updateTask(Task task) {
         Session session = sessionFactory.getCurrentSession();

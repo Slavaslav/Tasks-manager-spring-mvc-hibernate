@@ -86,3 +86,12 @@ table {
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
 }
+
+.bordered-td {
+    word-break: break-all;
+}
+
+.web-form {
+    display: inline-block;
+    width: 45%;
+}

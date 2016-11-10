@@ -1,4 +1,7 @@
 # Tasks Manager SpringMVC Hibernate
 
-<img src="https://cloud.githubusercontent.com/assets/16716940/20075471/e8c36b8c-a53c-11e6-973c-03cef4fbb018.PNG" height="0">
-<img src="https://cloud.githubusercontent.com/assets/16716940/20075472/e9bd6c5e-a53c-11e6-9a05-92c8665813ba.PNG" height="0">
+For IntelliJ IDEA:
+To successfully import a project to use the settings from the file Tasks-Manager-SpringMVC-Hibernate.iml. For automatic connection Spring framework and automatic marks folders.
+After that you can start InitializeDB.java to fill database and deploy the application in Tomcat.
+
+<img src="https://cloud.githubusercontent.com/assets/16716940/20175205/510805fe-a74a-11e6-883a-4a9058dca653.PNG" height="400">
